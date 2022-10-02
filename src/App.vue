@@ -18,8 +18,8 @@
         </transition>
 	</div>
 </template>
-
 <script>
+
 import AppTopBar from './AppTopbar.vue';
 import AppMenu from './AppMenu.vue';
 import AppConfig from './AppConfig.vue';
@@ -27,6 +27,8 @@ import AppFooter from './AppFooter.vue';
 
 export default {
     emits: ['change-theme'],
+    setup: () => {
+    },
     data() {
         return {
             layoutMode: 'static',

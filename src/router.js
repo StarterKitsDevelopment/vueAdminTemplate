@@ -1,11 +1,10 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
-import App from './App.vue';
-
+import { createRouter, createMemoryHistory } from 'vue-router';
+import AppLayout from './layouts/AppLayout.vue';
 const routes = [
     {
         path: '/',
-        name: 'app',
-        component: App,
+        name: 'AppLayout',
+        component: AppLayout,
         children: [
             {
                 path: '',
@@ -169,7 +168,7 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createMemoryHistory(),
     routes,
 });
 

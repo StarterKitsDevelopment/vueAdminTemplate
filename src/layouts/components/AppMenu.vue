@@ -1,9 +1,12 @@
 <template>
 	<div class="layout-menu-container">
-		<AppSubmenu :items="model" class="layout-menu" :root="true" @menuitem-click="onMenuItemClick" @keydown="onKeyDown" />
-		<a href="https://www.primefaces.org/primeblocks-vue" class="block mt-3">
-			<img alt="primeblocks" :src="bannerImage()" class="w-full" />
-		</a>
+		<AppSubmenu 
+			class="layout-menu"
+			:items="model" 
+			:root="true" 
+			@menuitem-click="onMenuItemClick" 
+			@keydown="onKeyDown" 
+		/>
 	</div>
 </template>
 
@@ -11,13 +14,18 @@
 import AppSubmenu from './AppSubmenu';
 
 export default {
-	props: {
-		model: Array
+	components: {
+		AppSubmenu
 	},
+
+	props: { model: Array },
+
     methods: {
+
         onMenuItemClick(event) {
             this.$emit('menuitem-click', event);
         },
+
 		onKeyDown(event) {
 			const nodeElement = event.target;
 			if (event.code === 'Enter' || event.code === 'Space') {
@@ -25,17 +33,10 @@ export default {
 				event.preventDefault();
 			}
 		},
+
 		bannerImage() {
 			return this.$appState.darkTheme ? 'images/banner-primeblocks-dark.png' : 'images/banner-primeblocks.png';
 		}
     },
-	computed: {
-		darkTheme() {
-			return this.$appState.darkTheme;
-		}
-	},
-	components: {
-		'AppSubmenu': AppSubmenu
-	}
 }
 </script>

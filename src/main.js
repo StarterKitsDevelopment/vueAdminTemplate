@@ -6,6 +6,8 @@ import './assets/styles/layout.scss';
 import './assets/demo/flags/flags.css';
 
 import { createApp, reactive } from 'vue';
+import { createPinia } from 'pinia'
+
 import router from './router';
 import AppWrapper from './AppWrapper.vue';
 import PrimeVue from 'primevue/config';
@@ -102,10 +104,13 @@ router.beforeEach(function(to, from, next) {
     next();
 });
 
+const pinia = createPinia();
+
 const app = createApp(AppWrapper);
 
-app.config.globalProperties.$appState = reactive({ theme: 'lara-light-indigo', darkTheme: false });
+app.config.globalProperties.$appState = reactive({ theme: 'lara-light-indigo', darkTheme: true });
 
+app.use(pinia);
 app.use(PrimeVue, { ripple: true, inputStyle: 'outlined' });
 app.use(ConfirmationService);
 app.use(ToastService);
